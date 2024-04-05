@@ -2,8 +2,6 @@
 @{
 	ViewData["Title"] = "Home Page";
 }
-
-
 <style>
 
 *{
@@ -138,6 +136,8 @@ form .signup-link a:hover{
 }
 </style>
 
+
+
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
@@ -153,38 +153,31 @@ form .signup-link a:hover{
 		 </div>
 		@using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
 		{
+			<div class="field">
+						   <input  asp-for="UserName" required>
+				   <label>Email Address</label>
+				</div>
 				<div class="field">
-							   <input  asp-for="UserName" required>
-						   <label>Username</label>
-					</div>
-						<div class="field">
-								   <input  asp-for="FullName" required>
-							   <label>FullName</label>
-						</div>
-							<div class="field">
-								   <input  asp-for="Email" required>
-							   <label>Address</label>
-						</div>
-					<div class="field">
-						   <input  asp-for="Password" type="password" required>
-					   <label>Password</label>
-					</div>
-					<div class="content">
-					   <div class="checkbox">
-						  <input type="checkbox" id="remember-me">
-						  <label for="remember-me">Remember me</label>
-					   </div>
-					   <div class="pass-link">
-						  <a href="#">Forgot password?</a>
-					   </div>
-					</div>
-					<div class="field">
-					   <input type="submit" value="Register">
-					</div>
-					<div class="signup-link">
-					   <a asp-action="SignIn"> Log In </a>
-					</div>
+					   <input  asp-for="Password" type="password" required>
+				   <label>Password</label>
+				</div>
+				<div class="content">
+				   <div class="checkbox">
+					  <input type="checkbox" id="remember-me">
+					  <label for="remember-me">Remember me</label>
+				   </div>
+				   <div class="pass-link">
+					  <a href="#">Forgot password?</a>
+				   </div>
+				</div>
+				<div class="field">
+				   <input type="submit" value="Login">
+				</div>
+				<div class="signup-link">
+				   Not a member? <a asp-action="SignUp">Signup now</a>
+				</div>
 		}
 	  </div>
    </body>
 </html>
+

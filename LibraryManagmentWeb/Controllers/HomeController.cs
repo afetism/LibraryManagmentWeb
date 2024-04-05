@@ -13,7 +13,7 @@ namespace LibraryManagmentWeb.Controllers
 			_logger = logger;
 		}
 
-		public IActionResult Index()
+		public IActionResult SignIn()
 		{
 			return View();
 		}
