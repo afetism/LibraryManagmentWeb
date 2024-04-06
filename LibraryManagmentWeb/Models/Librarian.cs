@@ -2,9 +2,13 @@
 {
 	public class Librarian
 	{
-		public Librarian(string fullName, string email, string password)
+		public Librarian()
+		{
+		}
+		public Librarian(string fullName,string userName ,string email, string password)
 		{
             FullName = fullName.ToLower();
+			UserName = userName.ToLower();
 			Email=email;
 			Password=password;
 			Id=Guid.NewGuid();

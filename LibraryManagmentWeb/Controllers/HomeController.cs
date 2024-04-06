@@ -13,6 +13,10 @@ namespace LibraryManagmentWeb.Controllers
 		{
 			_logger = logger;
 		}
+		
+		
+
+
 		[HttpGet]
 		public IActionResult SignIn()
 		{
@@ -29,41 +33,63 @@ namespace LibraryManagmentWeb.Controllers
 			
 			return View();
 		}
+
+		
+
 		[HttpPost]
-		public IActionResult SignIn(Librarian librarian)
+		public IActionResult SignIn(Librarian Librarian)
 		{
-			LibrarianBase _librarian = new ();
-			var status = _librarian.Librarians.FirstOrDefault(e => e.UserName == librarian.UserName &&
-			e.Password == librarian.Password);
-			if (status == null)
+			JsonHandler<Librarian> _librarian = new JsonHandler<Librarian>("Librarian.json");
+			Librarian _ = new("a", "a", "a", "a");
+			_librarian.Values.Add(_);
+			Librarian status=null;
+            foreach (var item in _librarian.Values)
+            {
+                if(item.UserName ==Librarian.UserName && item.Password ==Librarian.Password)
+				{
+					status = item;break;
+				}
+					
+
+			}
+            if (status == null)
 			{
 				ViewBag.LoginStatus = 0;
 			}
 			else
 			{
-				return RedirectToAction("Welcome Again!", "Home", new { employee = status });
-			}
-			return View(librarian);
-		}
+				
 
+				return RedirectToAction("MainMenu", "Home", new { librarian = status });
+			}
+			return View(Librarian);
+		}
 
 
 		[HttpPost]
-		public IActionResult Register(Librarian librarian)
+		public IActionResult SignUp(Librarian Librarian)
 		{
-			LibrarianBase _librarian = new();
+			JsonHandler<Librarian> _libr = new("Librarian.json");
+			Librarian _ = new("b", "b", "b", "b");
+			_libr.Values.Add(_);
+
+
 
 			if (ModelState.IsValid)
 			{
-				_librarian.Librarians.Add(librarian);
-				return RedirectToAction("SuccessPage", "Home", new { employee = librarian });
+				_libr.Values.Add(Librarian);
+				_libr.SaveData();
+				return RedirectToAction("MainMenu", "Home", new { librarian = Librarian });
 			}
 
-			return View(librarian);
+			return View(Librarian);
 		}
 
-
-
+		
+		public IActionResult MainMenu(Librarian librarian)
+		{
+			return View(librarian);
+		}
 
 
 

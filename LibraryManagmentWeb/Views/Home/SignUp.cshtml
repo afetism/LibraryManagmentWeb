@@ -151,7 +151,7 @@ form .signup-link a:hover{
 		 <div class="title">
 			Login Form
 		 </div>
-		@using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
+		@using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
 		{
 				<div class="field">
 							   <input  asp-for="UserName" required>
@@ -179,7 +179,7 @@ form .signup-link a:hover{
 					   </div>
 					</div>
 					<div class="field">
-					   <input type="submit" value="Register">
+						   <input  type="submit" value="Register">
 					</div>
 					<div class="signup-link">
 					   <a asp-action="SignIn"> Log In </a>
